@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - ArnishAI</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --accent-color: #ff006e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.9), rgba(131, 56, 236, 0.9)), url(/api/placeholder/1200/400) center / cover no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-top: 70px;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Features Hero Section */
+        .features-hero {
+            margin-top: 80px;
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .features-overview {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-overview-content {
+            flex: 1;
+        }
+
+        .features-overview-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-overview-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .features-overview-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-overview-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Features Categories Section */
+        .features-categories {
+            background-color: #f1f5f9;
+            padding: 5rem 0;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .category-tab {
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-tab.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: #64748b;
+        }
+
+        /* Advanced Features Section */
+        .advanced-features {
+            padding: 5rem 0;
+        }
+        
+        .advanced-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5rem;
+            gap: 4rem;
+        }
+        
+        .advanced-feature:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .advanced-feature-content {
+            flex: 1;
+        }
+        
+        .advanced-feature-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .advanced-feature-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .advanced-feature-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-bullets {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-bullets li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-bullets li::before {
+            content: '✓';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .advanced-feature-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .advanced-feature-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            background-color: #f1f5f9;
+            padding: 5rem 0;
+        }
+        
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .use-case-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .use-case-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .use-case-image {
+            height: 200px;
+            background-color: #e2e8f0;
+        }
+        
+        .use-case-content {
+            padding: 2rem;
+        }
+        
+        .use-case-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .use-case-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btn {
+            background-color: white;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 1rem 2rem;
+        }
+        
+        .cta-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .features-overview {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 5rem 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .advanced-feature {
+                flex-direction: column !important;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Arnish<span>AI</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/front/index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="/front/aboutus.html">About Us</a></li>
+                    <li><a href="/front/services.html">Services</a></li>
+                    <li><a href="index.html#testimonials">OCR</a></li>
+                    <li><a href="/front/contact.html">Contact</a></li>
+                    <span class="close-menu">×</span>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1 class="page-title">Our AI Features</h1>
+            <!-- <p class="page-subtitle">Discover how ArnishAI's innovative features can transform your business operations and drive growth</p> -->
+            <div class="breadcrumb">
+                <a href="/front/index.html">Home</a>
+                <span>></span>
+                <span>Features</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview Section -->
+    <section class="features-hero section">
+        <div class="container">
+            <div class="features-overview">
+                <div class="features-overview-content">
+                    <h2>Next-Generation AI Capabilities</h2>
+                    <p>ArnishAI delivers cutting-edge artificial intelligence solutions designed to tackle your most complex business challenges. Our proprietary technology combines the latest advancements in machine learning, natural language processing, and computer vision to create powerful tools that transform how businesses operate.</p>
+                    <p>Our features are designed with flexibility, scalability, and ease of integration in mind, ensuring that our solutions grow with your business needs while delivering immediate value.</p>
+                    <a href="#core-features" class="btn btn-primary">Explore Core Features</a>
+                </div>
+                <div class="features-overview-image">
+                    <img src="/api/placeholder/600/400" alt="ArnishAI Features Overview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features Categories Section -->
+    <section id="core-features" class="features-categories section">
+        <div class="container">
+            <h2 class="section-title">Core Features</h2>
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Features</div>
+                <div class="category-tab" data-category="ml">Machine Learning</div>
+                <div class="category-tab" data-category="nlp">Natural Language</div>
+                <div class="category-tab" data-category="vision">Computer Vision</div>
+                <div class="category-tab" data-category="data">Data Analytics</div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item" data-category="ml">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">Adaptive Learning Algorithms</h3>
+                    <p class="feature-description">Our algorithms continuously learn and improve from data inputs, adapting to changing patterns and requirements without manual intervention.</p>
+                </div>
+                <div class="feature-item" data-category="ml">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Predictive Modeling</h3>
+                    <p class="feature-description">Forecast future trends and outcomes with high accuracy using our advanced predictive modeling capabilities.</p>
+                </div>
+                <div class="feature-item" data-category="nlp">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-title">Multi-Language Processing</h3>
+                    <p class="feature-description">Process and analyze text in over 50 languages with near-human accuracy for sentiment, intent, and key information extraction.</p>
+                </div>
+                <div class="feature-item" data-category="nlp">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Content Generation</h3>
+                    <p class="feature-description">Create human-quality content at scale for marketing, customer service, and internal documentation needs.</p>
+                </div>
+                <div class="feature-item" data-category="vision">
+                    <div class="feature-icon">👁️</div>
+                    <h3 class="feature-title">Object Recognition</h3>
+                    <p class="feature-description">Identify and classify objects within images and video streams with high precision across various environmental conditions.</p>
+                </div>
+                <div class="feature-item" data-category="vision">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Visual Data Analysis</h3>
+                    <p class="feature-description">Extract meaningful insights from visual data sources including charts, graphs, and complex visualizations.</p>
+                </div>
+                <div class="feature-item" data-category="data">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Real-time Analytics</h3>
+                    <p class="feature-description">Process and analyze massive data streams in real-time to enable immediate decision-making and response.</p>
+                </div>
+                <div class="feature-item" data-category="data">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Anomaly Detection</h3>
+                    <p class="feature-description">Automatically identify unusual patterns and outliers in your data that may indicate opportunities or threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Features Section -->
+    <section class="advanced-features section">
+        <div class="container">
+            <h2 class="section-title">Advanced Features</h2>
+            <div class="advanced-feature">
+                <div class="advanced-feature-content">
+                    <h3 class="advanced-feature-title">Intelligent Process Automation</h3>
+                    <p class="advanced-feature-description">Transform your workflow efficiency with our intelligent process automation that goes beyond simple rule-based automation. Our AI can understand context, make decisions, and learn from outcomes.</p>
+                    <ul class="feature-bullets">
+                        <li>Cognitive workflow analysis that identifies optimization opportunities</li>
+                        <li>Adaptive automation that evolves with changing business processes</li>
+                        <li>Decision-making capabilities that handle exceptions and edge cases</li>
+                        <li>Integration with existing systems and tools for seamless operation</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="advanced-feature-image">
+                    <img src="/api/placeholder/600/400" alt="Intelligent Process Automation">
+                </div>
+            </div>
+            <div class="advanced-feature">
+                <div class="advanced-feature-content">
+                    <h3 class="advanced-feature-title">Hyper-personalization Engine</h3>
+                    <p class="advanced-feature-description">Create individualized experiences for your customers with our hyper-personalization engine that analyzes behaviors, preferences, and contextual factors in real-time.</p>
+                    <ul class="feature-bullets">
+                        <li>Dynamic user profiling that captures evolving preferences</li>
+                        <li>Multi-dimensional recommendation algorithms</li>
+                        <li>Contextual awareness that considers time, location, and device</li>
+                        <li>A/B testing framework for continuous optimization</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="advanced-feature-image">
+                    <img src="/api/placeholder/600/400" alt="Hyper-personalization Engine">
+                </div>
+            </div>
+            <div class="advanced-feature">
+                <div class="advanced-feature-content">
+                    <h3 class="advanced-feature-title">Autonomous Decision Intelligence</h3>
+                    <p class="advanced-feature-description">Empower your organization with AI-driven decision support that analyzes complex scenarios, evaluates options, and recommends optimal actions.</p>
+                    <ul class="feature-bullets">
+                        <li>Multi-factor decision modeling with risk assessment</li>
+                        <li>Predictive analytics that forecast outcomes of different choices</li>
+                        <li>Natural language explanations for AI recommendations</li>
+                        <li>Continuous learning from decision outcomes and feedback</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="advanced-feature-image">
+                    <img src="/api/placeholder/600/400" alt="Autonomous Decision Intelligence">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases section">
+        <div class="container">
+            <h2 class="section-title">Feature Use Cases</h2>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-image">
+                        <img src="/api/placeholder/400/200" alt="Retail Analytics">
+                    </div>
+                    <div class="use-case-content">
+                        <h3 class="use-case-title">Retail Analytics</h3>
+                        <p class="use-case-description">Our computer vision and data analytics features help retailers optimize store layouts, track inventory in real-time, and understand customer shopping patterns.</p>
+                        <a href="index.html#contact" class="btn btn-outline">See Case Study</a>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-image">
+                        <img src="/api/placeholder/400/200" alt="Customer Service Automation">
+                    </div>
+                    <div class="use-case-content">
+                        <h3 class="use-case-title">Customer Service Automation</h3>
+                        <p class="use-case-description">Our NLP features power intelligent virtual assistants that resolve customer inquiries with human-like understanding and empathy.</p>
+                        <a href="index.html#contact" class="btn btn-outline">See Case Study</a>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-image">
+                        <img src="/api/placeholder/400/200" alt="Supply Chain Optimization">
+                    </div>
+                    <div class="use-case-content">
+                        <h3 class="use-case-title">Supply Chain Optimization</h3>
+                        <p class="use-case-description">Our predictive modeling and decision intelligence features help optimize logistics, inventory management, and demand forecasting.</p>
+                        <a href="index.html#contact" class="btn btn-outline">See Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Harness the Power of AI?</h2>
+            <p class="cta-subtitle">Contact us today to learn how our advanced features can solve your unique business challenges.</p>
+            <a href="index.html#contact" class="btn cta-btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>ArnishAI</h3>
+                    <p>Transforming business through innovative AI solutions that drive growth and efficiency.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="/front/aboutus.html">About Us</a></li>
+                        <li><a href="/front/services.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="/front/services.html">AI Consulting</a></li>
+                        <li><a href="/front/services.html">Custom AI Development</a></li>
+                        <li><a href="/front/services.html">AI Implementation</a></li>
+                        <li><a href="/front/services.html">AI Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArnishAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+        
+        // Category Tabs
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const featureItems = document.querySelectorAll('.feature-item');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const category = tab.getAttribute('data-category');
+                
+                // Show all items if 'all' category is selected, otherwise filter
+                if (category === 'all') {
+                    featureItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                } else {
+                    featureItems.forEach(item => {
+                        if (item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+<!-- Language Footer Start -->
+<!-- <div style="text-align:center; padding: 20px 10px; background-color: #0b1622; color: white; font-size: 14px;">
+  <strong>Language </strong>&nbsp;
+  <a href="#" onclick="changeLang('ar')">عربي</a> |
+  <a href="#" onclick="changeLang('id')">Bahasa Indonesia</a> |
+  <a href="#" onclick="changeLang('de')">Deutsch</a> |
+  <a href="#" onclick="changeLang('en')">English</a> |
+  <a href="#" onclick="changeLang('es')">Español</a> |
+  <a href="#" onclick="changeLang('fr')">Français</a> |
+  <a href="#" onclick="changeLang('it')">Italiano</a> |
+  <a href="#" onclick="changeLang('pt')">Português</a> |
+  <a href="#" onclick="changeLang('vi')">Tiếng Việt</a> |
+  <a href="#" onclick="changeLang('tr')">Türkçe</a> |
+  <a href="#" onclick="changeLang('ru')">Русский</a> |
+  <a href="#" onclick="changeLang('th')">ไทย</a> |
+  <a href="#" onclick="changeLang('ja')">日本語</a> |
+  <a href="#" onclick="changeLang('ko')">한국어</a> |
+  <a href="#" onclick="changeLang('zh-CN')">中文(简体)</a> |
+  <a href="#" onclick="changeLang('zh-TW')">中文(繁體)</a> |
+  <a href="#" onclick="changeLang('hi')">हिन्दी</a> |
+  <a href="#" onclick="changeLang('mr')">मराठी</a> |
+
+</div> -->
+
+<div id="google_translate_element" style="display:none;"></div>
+
+<script type="text/javascript">
+  function changeLang(lang) {
+    var select = document.querySelector("select.goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+    }
+  }
+
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript"
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+<!-- Language Footer End -->
+    </script>
+</body>
+</html>

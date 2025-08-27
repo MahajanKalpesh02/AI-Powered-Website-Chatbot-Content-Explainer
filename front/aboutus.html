@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ArnishAI</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --accent-color: #ff006e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Banner */
+        .page-banner {
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.9), rgba(131, 56, 236, 0.9)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        /* About Section Styles */
+        .about-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .about-intro p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-story {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Mission Vision Values */
+        .mvv-section {
+            background-color: #f1f5f9;
+            padding: 5rem 0;
+        }
+        
+        .mvv-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .mvv-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .mvv-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .mvv-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mvv-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Team Section */
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-image {
+            height: 250px;
+            background-color: #e2e8f0;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-position {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .member-bio {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Milestones Section */
+        .milestones {
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.9), rgba(131, 56, 236, 0.9)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            color: white;
+            padding: 5rem 0;
+        }
+        
+        .milestones-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: white;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 40px);
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 40px);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 80px;
+            height: 40px;
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btn {
+            background-color: white;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 1rem 2rem;
+        }
+        
+        .cta-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 5rem 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .timeline::after {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                left: 60px !important;
+            }
+            
+            .timeline-year {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Arnish<span>AI</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/front/features.html">Features</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="/front/services.html">Services</a></li>
+                    <li><a href="index.html#testimonials">OCR</a></li>
+                    <li><a href="/front/contact.html">Contact</a></li>
+                    <span class="close-menu">×</span>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1 class="page-title">About Us</h1>
+            <div class="breadcrumb">
+                <a href="/front/index.html">Home</a>
+                <span>></span>
+                <span>About Us</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Intro Section -->
+    <section class="section">
+        <div class="container">
+            <div class="about-intro">
+                <h2 class="section-title">Our Story</h2>
+                <p>At ArnishAI, we're on a mission to transform the way businesses operate through the power of artificial intelligence. Founded in 2020 by a team of AI researchers and industry veterans, we've quickly grown into a leading provider of innovative AI solutions for businesses of all sizes.</p>
+                <p>Our journey began with a simple idea: to make advanced AI technology accessible, practical, and beneficial for real-world business applications. Today, we're proud to serve clients across multiple industries, helping them leverage the transformative power of AI to solve complex problems and drive growth.</p>
+            </div>
+
+            <div class="about-story">
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="ArnishAI Team">
+                </div>
+                <div class="about-content">
+                    <h2>From Humble Beginnings</h2>
+                    <p>ArnishAI was born out of a collaboration between Dr. Arnish Kapoor, an AI researcher with a vision for practical applications, and a team of technology enthusiasts who shared his passion for using AI to solve real-world problems.</p>
+                    <p>What started as a small team working out of a co-working space has grown into a company with global reach and recognition. Our success is built on a foundation of technical excellence, deep industry knowledge, and an unwavering commitment to client success.</p>
+                    <p>Throughout our journey, we've remained true to our core belief that AI should be accessible, ethical, and impactful. This philosophy guides everything we do, from product development to client partnerships.</p>
+                </div>
+            </div>
+
+            <div class="about-story">
+                <div class="about-content">
+                    <h2>Innovation That Drives Results</h2>
+                    <p>Innovation is at the heart of everything we do at ArnishAI. Our team of researchers and engineers constantly push the boundaries of what's possible with AI, developing cutting-edge solutions that address real business challenges.</p>
+                    <p>We believe that the most powerful innovation happens at the intersection of advanced technology and deep domain expertise. That's why we work closely with industry experts to develop AI solutions that are not just technically impressive, but also highly practical and effective in real-world contexts.</p>
+                    <p>Our commitment to innovation has led to several breakthroughs in machine learning, natural language processing, and computer vision that have transformed the way our clients operate and compete.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="ArnishAI Innovation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Vision Values Section -->
+    <section class="mvv-section">
+        <div class="container">
+            <h2 class="section-title">Mission, Vision & Values</h2>
+            <div class="mvv-container">
+                <div class="mvv-card">
+                    <div class="mvv-icon">🎯</div>
+                    <h3 class="mvv-title">Our Mission</h3>
+                    <p>To democratize AI by creating accessible, powerful, and ethical solutions that solve real business problems and drive meaningful growth.</p>
+                </div>
+                <div class="mvv-card">
+                    <div class="mvv-icon">👁️</div>
+                    <h3 class="mvv-title">Our Vision</h3>
+                    <p>To build a future where AI enhances human potential, enabling businesses of all sizes to thrive in an increasingly complex and competitive world.</p>
+                </div>
+                <div class="mvv-card">
+                    <div class="mvv-icon">⚖️</div>
+                    <h3 class="mvv-title">Our Values</h3>
+                    <p>Innovation, Integrity, Impact, Inclusion, and Client Success guide our decisions and actions as we work to fulfill our mission and vision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-intro">
+                <p>Our team consists of brilliant minds from diverse backgrounds, united by a passion for AI and a commitment to excellence. Each member brings unique expertise and perspective to our work, creating a culture of innovation and collaboration.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Dr. Arnish Kapoor">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Arnish Kapoor</h3>
+                        <p class="member-position">Founder & CEO</p>
+                        <p class="member-bio">AI researcher with over 15 years of experience in machine learning and natural language processing. Previously led AI research teams at major tech companies.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Sarah Chen">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sarah Chen</h3>
+                        <p class="member-position">CTO</p>
+                        <p class="member-bio">Computer science PhD with expertise in deep learning architectures. Passionate about building scalable AI systems that deliver real business value.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-position">Chief Strategy Officer</p>
+                        <p class="member-bio">Former management consultant with extensive experience helping enterprises implement AI solutions. Focused on ensuring our technology delivers measurable business outcomes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Dr. Priya Sharma">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Priya Sharma</h3>
+                        <p class="member-position">Head of Research</p>
+                        <p class="member-bio">Leading researcher in computer vision and reinforcement learning with numerous published papers. Drives our ongoing research efforts and innovation pipeline.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">tw</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones Section -->
+    <section class="milestones">
+        <div class="container">
+            <h2 class="milestones-title">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">ArnishAI is Founded</h3>
+                        <p>Dr. Arnish Kapoor and a small team of AI researchers and engineers launch ArnishAI with a mission to democratize AI for businesses.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">First Major Client</h3>
+                        <p>ArnishAI partners with a Fortune 500 company to develop a custom AI solution, marking our first major enterprise client.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Series A Funding</h3>
+                        <p>ArnishAI secures $10 million in Series A funding to accelerate product development and expand our team.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Global Expansion</h3>
+                        <p>ArnishAI opens offices in London and Singapore, expanding our global presence and client base.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Innovation Award</h3>
+                        <p>ArnishAI receives the prestigious Tech Innovator Award for our groundbreaking work in applied AI solutions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Looking Forward</h3>
+                        <p>ArnishAI continues to innovate and grow, with exciting new products and partnerships on the horizon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Business with AI?</h2>
+            <p class="cta-subtitle">Contact us today to discuss how our AI solutions can help you achieve your business goals.</p>
+            <a href="index.html#contact" class="btn cta-btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>ArnishAI</h3>
+                    <p>Transforming business through innovative AI solutions that drive growth and efficiency.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">AI Consulting</a></li>
+                        <li><a href="index.html#services">Custom AI Development</a></li>
+                        <li><a href="index.html#services">AI Implementation</a></li>
+                        <li><a href="index.html#services">AI Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArnishAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+
+    </script>
+
+<!-- Language Footer Start -->
+<!-- <div style="text-align:center; padding: 20px 10px; background-color: #0b1622; color: white; font-size: 14px;">
+  <strong>Language </strong>&nbsp;
+  <a href="#" onclick="changeLang('ar')">عربي</a> |
+  <a href="#" onclick="changeLang('id')">Bahasa Indonesia</a> |
+  <a href="#" onclick="changeLang('de')">Deutsch</a> |
+  <a href="#" onclick="changeLang('en')">English</a> |
+  <a href="#" onclick="changeLang('es')">Español</a> |
+  <a href="#" onclick="changeLang('fr')">Français</a> |
+  <a href="#" onclick="changeLang('it')">Italiano</a> |
+  <a href="#" onclick="changeLang('pt')">Português</a> |
+  <a href="#" onclick="changeLang('vi')">Tiếng Việt</a> |
+  <a href="#" onclick="changeLang('tr')">Türkçe</a> |
+  <a href="#" onclick="changeLang('ru')">Русский</a> |
+  <a href="#" onclick="changeLang('th')">ไทย</a> |
+  <a href="#" onclick="changeLang('ja')">日本語</a> |
+  <a href="#" onclick="changeLang('ko')">한국어</a> |
+  <a href="#" onclick="changeLang('zh-CN')">中文(简体)</a> |
+  <a href="#" onclick="changeLang('zh-TW')">中文(繁體)</a> |
+  <a href="#" onclick="changeLang('hi')">हिन्दी</a> |
+  <a href="#" onclick="changeLang('mr')">मराठी</a> |
+</div> -->
+
+<div id="google_translate_element" style="display:none;"></div>
+
+<script type="text/javascript">
+  function changeLang(lang) {
+    var select = document.querySelector("select.goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+    }
+  }
+
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript"
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+<!-- Language Footer End -->
+    </script>
+</body>
+</html>

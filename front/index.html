@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArnishAI - Advanced AI Solutions</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --accent-color: #ff006e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.8)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            margin-top: 0;
+            padding-top: 4rem;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #64748b;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Features Section */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #f1f5f9;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-description {
+            margin-bottom: 1rem;
+            color: #64748b;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f1f5f9;
+        }
+
+        .testimonials-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            overflow: hidden;
+        }
+
+        .testimonial-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 1rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            margin-right: 1rem;
+        }
+
+        .client-name {
+            font-weight: 600;
+        }
+
+        .client-position {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .testimonial-btn {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .testimonial-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            background-color: white;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 1rem 2rem;
+        }
+
+        .cta-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0. 1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 5rem 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .close-menu {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .testimonial-slide {
+                padding: 0;
+            }
+        }
+
+        /* Tooltip Styling */
+        .tooltip {
+            position: absolute;
+            background-color: #1c1c1e;
+            color: white;
+            border-radius: 12px;
+            padding: 16px;
+            max-width: 320px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            transition: opacity 0.3s ease;
+        }
+
+        .tooltip.hidden {
+            display: none;
+        }
+
+        #closeTooltip {
+            position: absolute;
+            top: 6px;
+            right: 12px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .tooltip-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .tooltip-actions button {
+            background-color: #333;
+            color: #eee;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        /* Language Selector Styles */
+        .language-selector {
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .language-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .language-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .language-options a {
+            color: #94a3b8;
+            transition: color 0.3s ease;
+            padding: 0 0.25rem;
+        }
+
+        .language-options a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .language-options a.active {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* RTL Language Support */
+        [dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .feature-card,
+        [dir="rtl"] .about-content,
+        [dir="rtl"] .contact-item {
+            text-align: right;
+        }
+
+        [dir="rtl"] .contact-icon {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .language-options {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .language-options span {
+                display: none;
+            }
+        }
+
+        #aws-chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #6e56cf, #a18cd1);
+            color: white;
+            font-size: 24px;
+            padding: 14px;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        #aws-chat-box {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 340px;
+            height: 390px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+            z-index: 999;
+        }
+
+        #aws-chat-box.hidden {
+            display: none;
+        }
+
+        .aws-chat-header {
+            background: #1e293b;
+            color: white;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .aws-chat-body {
+            background: #f3f4f6;
+            padding: 16px;
+            height: 260px;
+            overflow-y: auto;
+        }
+
+        .bot-msg,
+        .user-msg {
+            margin-bottom: 10px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            max-width: 75%;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .bot-msg {
+            background: #e0e7ff;
+            color: #111827;
+            align-self: flex-start;
+        }
+
+        .user-msg {
+            background: #deeee6;
+            color: #4d9c86;
+            align-self: flex-end;
+            text-align: right;
+            margin-left: auto;
+            margin-top: 9px;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .quick-replies button {
+            flex: 1 1 100%;
+            background: linear-gradient(to right, #8ec5fc, #e0c3fc);
+            border: none;
+            border-radius: 12px;
+            padding: 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .aws-chat-footer {
+            display: flex;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            background: #fff;
+            position: relative;
+            top: 20px;
+        }
+
+        .aws-chat-footer input {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .aws-chat-footer button {
+            margin-left: 8px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .typing {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.typing span {
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  background: #6b7280;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Arnish<span>AI</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="/front/features.html">Features</a></li>
+                    <li><a href="/front/aboutus.html">About Us</a></li>
+                    <li><a href="/front/services.html">Services</a></li>
+                    <li><a href="#testimonials">OCR</a></li>
+                    <li><a href="/front/contact.html">Contact</a></li>
+                    <span class="close-menu">×</span>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transforming Business with Intelligent AI Solutions</h1>
+                <p class="hero-subtitle">ArnishAI combines cutting-edge artificial intelligence technologies to deliver
+                    innovative solutions that drive growth and efficiency.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#contact" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+        <div class="container">
+            <h2 class="section-title">Our Key Features</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon"><!-- Example (free version) -->
+                        <i class="fas fa-laptop-code" style="color: #8338ec;"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced Machine Learning</h3>
+                    <p>State-of-the-art algorithms that learn and adapt to your unique business needs and challenges.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa fa-signal"></i></div>
+                    <h3 class="feature-title">Intelligent Data Analysis</h3>
+                    <p>Transform raw data into actionable insights with our powerful analytics capabilities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket fa-spin" style="color: #B197FC;"></i></div>
+                    <h3 class="feature-title">Scalable Solutions</h3>
+                    <p>Our systems grow with your business, ensuring optimal performance regardless of scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">About ArnishAI</h2>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="/front/img/ArnishAI.png" alt="ArnishAI Team">
+                </div>
+                <div class="about-content">
+                    <h2>Pioneering AI Innovation</h2>
+                    <p>Founded in 2020, ArnishAI has quickly established itself as a leader in the AI industry,
+                        delivering innovative solutions to businesses worldwide.</p>
+                    <p>Our team of experts combines deep technical knowledge with business acumen to create AI solutions
+                        that deliver real value. We're passionate about using technology to solve complex problems and
+                        drive meaningful change.</p>
+                    <p>At ArnishAI, we believe in responsible AI development that prioritizes transparency, fairness,
+                        and privacy. We work closely with our clients to ensure our solutions align with their values
+                        and goals.</p>
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+                <div id="tooltip" class="tooltip hidden">
+                    <span id="closeTooltip">×</span>
+                    <div id="tooltipText">Loading explanation...</div>
+                    <div class="tooltip-actions">
+                        <button>Simplify</button>
+                        <button>Ask a follow-up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Floating Chat Icon -->
+    <div id="aws-chat-toggle" onclick="toggleAWSChat()"><i class="fas fa-comment-alt"></i></div> 
+    AWS Style Chat Window
+     <div id="aws-chat-box" class="hidden"> 
+        <div class="aws-chat-header">
+            <strong>Ask Arnish</strong>
+            <span onclick="toggleAWSChat()">×</span>
+        </div>
+
+        <div class="aws-chat-body" id="aws-chat-body">
+            <div class="bot-msg">Hi, I can help with your AI queries or support.</div>
+            <div class="quick-replies">
+                <button onclick="sendQuick('Tell me about your services')">Our Services</button>
+                <button onclick="sendQuick('I need technical support')">Technical Support</button>
+                <button onclick="sendQuick('I want to integrate OCR')">OCR Integration</button>
+                <button onclick="sendQuick('Connect me to ArnishAI Team')">Connect with Team</button>
+            </div>
+        </div>
+
+        <div class="aws-chat-footer">
+            <input type="text" id="aws-user-input" placeholder="Type your message..."
+                onkeydown="if(event.key==='Enter') sendAWSMessage()" />
+            <button onclick="sendAWSMessage()">➤</button>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="AI Consulting">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">AI Consulting</h3>
+                        <p class="service-description">Strategic guidance to help you identify opportunities for AI
+                            integration in your business.</p>
+                        <a href="/front/services.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Custom AI Development">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Custom AI Development</h3>
+                        <p class="service-description">Tailored AI solutions designed to address your specific business
+                            challenges.</p>
+                        <a href="/front/services.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="AI Implementation">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">AI Implementation</h3>
+                        <p class="service-description">Seamless integration of AI systems into your existing
+                            infrastructure and workflows.</p>
+                        <a href="/front/services.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slides">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">ArnishAI transformed our business operations, delivering an
+                                    AI solution that exceeded our expectations. Their team's expertise and dedication to
+                                    our success were outstanding.</p>
+                                <div class="client-info">
+                                    <div class="client-avatar"></div>
+                                    <div>
+                                        <div class="client-name">Sarah Johnson</div>
+                                        <div class="client-position">CTO, TechGlobal</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">The data analysis platform developed by ArnishAI has given
+                                    us invaluable insights that have directly contributed to our 30% revenue growth this
+                                    year.</p>
+                                <div class="client-info">
+                                    <div class="client-avatar"></div>
+                                    <div>
+                                        <div class="client-name">Michael Chen</div>
+                                        <div class="client-position">CEO, DataDrive Inc.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">Working with ArnishAI was a game-changer for our company.
+                                    Their AI solution automated processes that used to take days, allowing our team to
+                                    focus on more strategic initiatives.</p>
+                                <div class="client-info">
+                                    <div class="client-avatar"></div>
+                                    <div>
+                                        <div class="client-name">Elena Rodriguez</div>
+                                        <div class="client-position">COO, Innovate Solutions</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <button class="testimonial-btn prev-btn">←</button>
+                    <button class="testimonial-btn next-btn">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Business with AI?</h2>
+            <p class="cta-subtitle">Contact us today to discuss how our AI solutions can help you achieve your business
+                goals.</p>
+            <a href="#contact" class="btn cta-btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon"><i class="fas fa-map-marker-alt fa-lg"
+                                    style="color: #eb0f1a;"></i></span>
+                            <p>123 AI Boulevard, Tech City, TC 54321</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon"><i class="fas fa-envelope fa-lg"
+                                    style="color: #411cb0;"></i></span>
+                            <p>info@arnishai.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon"><i class="fas fa-mobile fa-lg"
+                                    style="color: #131216;"></i></span>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>ArnishAI</h3>
+                    <p>Transforming business through innovative AI solutions that drive growth and efficiency.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">AI Consulting</a></li>
+                        <li><a href="#services">Custom AI Development</a></li>
+                        <li><a href="#services">AI Implementation</a></li>
+                        <li><a href="#services">AI Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArnishAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer> -->
+
+    <!-- Footer with Language Selector -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>ArnishAI</h3>
+                    <p>Transforming business through innovative AI solutions that drive growth and efficiency.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">AI Consulting</a></li>
+                        <li><a href="#services">Custom AI Development</a></li>
+                        <li><a href="#services">AI Implementation</a></li>
+                        <li><a href="#services">AI Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArnishAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // Testimonial Slider
+        const testimonialSlides = document.querySelector('.testimonial-slides');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.testimonial-slide').length;
+        function showSlide(index) {
+            const offset = -index * 100;
+            testimonialSlides.style.transform = `translateX(${offset}%)`;
+        }
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide === 0) ? totalSlides - 1 : currentSlide - 1;
+            showSlide(currentSlide);
+        });
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide === totalSlides - 1) ? 0 : currentSlide + 1;
+            showSlide(currentSlide);
+        });
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+
+        //         // text explainer 
+        document.addEventListener('mouseup', async (e) => {
+            const selectedText = window.getSelection().toString().trim();
+
+            if (selectedText.length > 0) {
+                const tooltip = document.getElementById('tooltip');
+                const tooltipText = document.getElementById('tooltipText');
+
+                //       // Show loading first
+                tooltipText.innerText = "Explaining...";
+                tooltip.style.left = `${e.pageX + 10}px`;
+                tooltip.style.top = `${e.pageY + 10}px`;
+                tooltip.classList.remove('hidden');
+
+                try {
+                    const response = await fetch('http://127.0.0.1:5050/explain', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ text: selectedText })
+                    });
+                    const data = await response.json();
+                    tooltipText.innerText = data.explanation || "No explanation found.";
+                } catch (err) {
+                    tooltipText.innerText = "Error fetching explanation.";
+                }
+            }
+        });
+
+        document.getElementById('closeTooltip').onclick = () => {
+            document.getElementById('tooltip').classList.add('hidden');
+        };
+        fetch('http://127.0.0.1:5050/explain', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: selectedText }),
+        })
+//      // AWS Chat Toggle
+        function toggleAWSChat() {
+            const chatBox = document.getElementById('aws-chat-box');
+            chatBox.classList.toggle('hidden');
+        }
+
+        function appendMessage(text, sender = 'bot') {
+            const msg = document.createElement('div');
+            msg.className = sender === 'user' ? 'user-msg' : 'bot-msg';
+            msg.textContent = text;
+            document.getElementById('aws-chat-body').appendChild(msg);
+            document.getElementById('aws-chat-body').scrollTop = 9999;
+        }
+
+        function sendQuick(msg) {
+            appendMessage(msg, 'user');
+            getResponseFromBot(msg);
+        }
+
+        function sendAWSMessage() {
+            const input = document.getElementById('aws-user-input');
+            const message = input.value.trim();
+            if (!message) return;
+            appendMessage(message, 'user');
+            input.value = '';
+            getResponseFromBot(message);
+        }
+
+        async function getResponseFromBot(message) {
+  // Remove old typing indicators
+  const oldTyping = document.getElementById("typingIndicator");
+  if (oldTyping) oldTyping.remove();
+
+  // Add animated typing dots
+  const typing = document.createElement("div");
+  typing.className = "typing";
+  typing.id = "typingIndicator";
+  typing.innerHTML = `
+    <span></span><span></span><span></span>
+  `;
+  document.getElementById("aws-chat-body").appendChild(typing);
+  document.getElementById("aws-chat-body").scrollTop = 9999;
+
+  try {
+    const response = await fetch('http://127.0.0.1:5050/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: message })
+    });
+    const data = await response.json();
+
+    // Remove typing
+    typing.remove();
+
+    // Show bot reply
+    appendMessage(data.explanation || 'No reply found.', 'bot');
+  } catch (err) {
+    typing.remove();
+    appendMessage("Oops! Something went wrong.", 'bot');
+  }
+}
+
+
+
+    </script>
+
+    <!-- Language Footer Start -->
+    <!-- <div style="text-align:center; padding: 20px 10px; background-color: #0b1622; color: white; font-size: 14px;">
+        <strong>Language </strong>&nbsp;
+        <a href="#" onclick="changeLang('ar')">عربي</a> |
+        <a href="#" onclick="changeLang('id')">Bahasa Indonesia</a> |
+        <a href="#" onclick="changeLang('de')">Deutsch</a> |
+        <a href="#" onclick="changeLang('en')">English</a> |
+        <a href="#" onclick="changeLang('es')">Español</a> |
+        <a href="#" onclick="changeLang('fr')">Français</a> |
+        <a href="#" onclick="changeLang('it')">Italiano</a> |
+        <a href="#" onclick="changeLang('pt')">Português</a> |
+        <a href="#" onclick="changeLang('vi')">Tiếng Việt</a> |
+        <a href="#" onclick="changeLang('tr')">Türkçe</a> |
+        <a href="#" onclick="changeLang('ru')">Русский</a> |
+        <a href="#" onclick="changeLang('th')">ไทย</a> |
+        <a href="#" onclick="changeLang('ja')">日本語</a> |
+        <a href="#" onclick="changeLang('ko')">한국어</a> |
+        <a href="#" onclick="changeLang('zh-CN')">中文(简体)</a> |
+        <a href="#" onclick="changeLang('zh-TW')">中文(繁體)</a> |
+        <a href="#" onclick="changeLang('hi')">हिंदी</a> |
+        <a href="#" onclick="changeLang('mr')">Marathi</a> |
+    </div> -->
+
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <script type="text/javascript">
+        function changeLang(lang) {
+            var select = document.querySelector("select.goog-te-combo");
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event("change"));
+            }
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+    <!-- Language Footer End -->
+    </script>
+</body>
+
+</html>
